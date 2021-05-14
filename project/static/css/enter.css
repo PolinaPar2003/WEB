@@ -1,0 +1,17 @@
+body { background: #060807; }
+
+.container img {position: absolute;
+left: 300px;
+top: 0px;}
+
+.container h1 {position: relative;
+width: 600px;
+height: 72px;
+left: 37px;
+top: 62px;
+
+font-family: SovMod;
+font-style: normal;
+font-weight: normal;
+font-size: 72px;
+line-height: 72px;}
