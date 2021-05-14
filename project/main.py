@@ -18,7 +18,6 @@ from data import users_resources
 from flask_restful import reqparse, abort, Api, Resource
 
 app = Flask(__name__)
-run_with_ngrok(app)
 api = Api(app)
 login_manager = LoginManager()
 login_manager.init_app(app)
@@ -231,9 +230,11 @@ def register():
 
 def main():
     db_session.global_init("db/oceanarium.db")
-    port = int(os.environ.get("PORT", 5000))
+    port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port)
+    app.run()
 
 
 if __name__ == '__main__':
     main()
+
