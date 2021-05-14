@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% block content %}
+<style>
+body { background-image: url('static/img/kumiko-shimizu-SjcrpttvjiE-unsplash.jpg');
+background-size: 1500px;}
+
+html { overflow-x: hidden;}
+
+    h1 {position: absolute;
+   top: 10px;
+   left: 595px;
+   font-style: normal;
+font-weight: normal;
+color: #FFFFFF;}
+
+.kard {position: fixed;
+top: 0px;
+left: 150px;
+opacity: 0.8;}
+
+.card {width: 750px;
+left: 150px;}
+
+.napis {position: absolute;
+top: 100px;
+left: 595px;}
+
+h2 {position: absolute;
+   top: 100px;
+   left: 250px;
+   font-style: normal;
+font-weight: normal;
+color: #FFFFFF;}
+
+.edit {position: relative;
+left: 150px;}
+</style>
+<body>
+<div class="kard">
+<img src="{{ rev }}" alt="здесь должна была быть картинка, но не нашлась" height="670" width="1000">
+</div>
+<h1>Отзывы</h1>
+
+{% if current_user.is_authenticated %}
+<div class="napis">
+<a href="http://127.0.0.1:5000/add_reviews" class="btn btn-danger">Написать отзыв</a>
+</div>
+{% else %}
+<h2>Чтобы оставить отзыв - зарегистрируйтесь или войдите</h2>
+{% endif %}
+{% for item in reviews%}
+{% if current_user.is_authenticated and current_user == item.user %}
+    <div class="edit">
+        <a href="/add_reviews/{{ item.id }}" class="btn btn-primary">
+            Изменить
+        </a>
+        <a href="/reviews_delete/{{ item.id }}" class="btn btn-danger">
+            Удалить
+        </a>
+    </div>
+<p> </p>
+{% endif %}
+<div class="card">
+  <div class="card-header">
+      <img src="{{ rev }}" class="rounded mr-2" alt="..." height="30" width="30">
+    <strong class="mr-auto">{{item.user.name}}</strong>
+    <small>{{item.created_date}}</small>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">{{item.title}}</h5>
+    <p class="card-text">{{item.content}}</p>
+  </div>
+</div>
+<p> </p>
+{% endfor %}
+{% endblock %}
+</body>

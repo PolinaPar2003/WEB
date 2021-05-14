@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block content %}
+<style>
+body { background-image: url('static/img/xad-eugenia-sanchez-ruiz-Bq64XXW-Huw-unsplash.jpg');
+background-size: 1500px;}
+
+    .kard {position: fixed;
+top: 0px;
+left: 150px;
+opacity: 0.8;}
+
+    h1 {position: absolute;
+   top: 10px;
+   left: 595px;
+   font-style: normal;
+font-weight: normal;
+color: #FFFFFF;}
+
+.card {
+left: 170px;
+right: 220px;}
+
+h2 {position: absolute;
+   top: 100px;
+   left: 200px;
+   right: 250px;
+   font-style: normal;
+font-weight: normal;
+color: #FFFFFF;}
+
+</style>
+<body>
+<div class="kard">
+<img src="{{ ser }}" alt="здесь должна была быть картинка, но не нашлась" height="670" width="1000">
+</div>
+<h1>Сувениры</h1>
+<h2>Наши сувениры можно приобрести в кассе океанариума. Все собранные средства идут на благотворительность</h2>
+<div class="row">
+{% for item in souvenirs%}
+  <div class="col-sm-6">
+
+
+<div class="card" style="width: 18rem;">
+  <img src="static/img/{{item.description}}" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{item.title}}</h5>
+    <p class="card-text">{{item.price}}</p>
+  </div>
+</div>
+<p> </p>
+
+  </div>
+{% endfor %}
+</div>
+{% endblock %}
+</body>

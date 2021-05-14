@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block content %}
+<style>
+    body { background-image: url('static/img/sea-fish-underwater-coral-coral-reef-seaweed-algae-biology-reef-marine-biology-organism-coral-reef-fish-kelp-macrocystis-pyrifera-shoal-47529.jpg');
+background-size: cover;}
+
+h1 {position: absolute;
+   top: 10px;
+   left: 595px;
+   font-style: normal;
+font-weight: normal;
+color: #FFFFFF;}
+
+.kard {position: fixed;
+top: 0px;
+left: 155px;
+opacity: 0.8;}
+
+h2 {position: absolute;
+   top: 100px;
+   left: 565px;
+   font-style: normal;
+font-weight: normal;
+color: #FFFFFF;}
+
+.table {position: absolute;
+top: 200px;
+left: 450px;
+width: 400px;}
+
+.alert {position: absolute;
+left: 200px;
+top: 400px;
+   font-style: normal;
+   right: 250px;
+font-weight: normal;}
+    </style>
+<div class="kard">
+<img src="{{ con }}" alt="здесь должна была быть картинка, но не нашлась" height="670" width="1000">
+</div>
+<h1>Контакты</h1>
+<h2>Режим работы</h2>
+<table class="table table-striped table-dark">
+  <thead>
+    <tr>
+      <th scope="col">День недели</th>
+      <th scope="col">Время</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Пн-Вс</th>
+      <td>10:00-21:00</td>
+    </tr>
+    <tr>
+      <th scope="row">Кассы работают</th>
+      <td>до 20:00</td>
+    </tr>
+  </tbody>
+</table>
+<div class="alert alert-danger" role="alert">
+    <p>
+Контактный номер: +7986854009
+ </p>
+    <p>Почта: aaaamoreee@yandex.ru</p>
+</div>
+{% endblock %}

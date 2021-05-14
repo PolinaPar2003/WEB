@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% block content %}
+    <style>
+        body { background: #060807;
+        background-size: cover;}
+
+.container img {position: fixed;
+left: 157px;
+top: 0px;}
+
+.container h1 {position: absolute;
+width: 600px;
+height: 72px;
+left: 37px;
+top: 40px;
+
+font-family: SovMod;
+font-style: normal;
+font-weight: normal;
+font-size: 72px;
+line-height: 72px;
+color: #FFFFFF;}
+
+.container h2 {position: absolute;
+width: 372px;
+height: 77px;
+left: 37px;
+top: 157px;
+
+font-family: SovMod;
+font-style: normal;
+font-weight: normal;
+font-size: 30px;
+line-height: 30px;
+
+color: #FFFFFF;}
+
+.knopka button { position: absolute;
+width: 300px;
+height: 70px;
+left: 868px;
+top: 459px;
+
+background: #2C75B9;
+border-radius: 50px;
+
+font-family: SovMod;
+font-style: normal;
+font-weight: normal;
+font-size: 40px;
+line-height: 48px;}
+
+.knopka a {color: #FFFFFF;
+text-decoration: none;}
+
+.kn1 button {position: absolute;
+width: 70px;
+height: 70px;
+left: 650px;
+top: 500px;
+
+background: #FFFFFF;
+border-radius: 100px}
+
+.menu {position: absolute;
+left: 941px;
+top: 50px;
+
+font-family: SovMod;
+font-style: normal;
+font-weight: normal;
+font-size: 40px;
+line-height: 48px;
+color: #FFFFFF;}
+    </style>
+<div class="container-fluid">
+    <div class="row">
+<div class="container">
+    <img src="{{ oct }}" alt="здесь должна была быть картинка, но не нашлась" height="670" width="1000">
+<h1>ОКЕАНАРИУМ</h1>
+    <h2>
+        более 12.200 обитателей под одной крышей
+    </h2>
+</div>
+<div class="knopka">
+    <button type="button" class="btn btn-primary btn-lg"><a href="http://127.0.0.1:5000/inhabitants">СМОТРЕТЬ</a></button>
+</div>
+ </div>
+  </div>
+{% endblock %}

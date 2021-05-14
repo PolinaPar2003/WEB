@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+                    <link rel="stylesheet"
+                            href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+                            integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+                            crossorigin="anonymous">
+    <title>{{ title }}</title>
+    <style>
+    body {background: #000000;
+font-style: normal;
+font-weight: normal;
+color: #FFFFFF;
+}
+
+        h1 {position: absolute;
+align: center;
+left: 500px;
+top: 50px;
+}
+
+.form1 {position: absolute;
+left: 430px;
+top: 150px;
+right: 400px;
+}
+
+br {background: #000000;}
+
+.form2 {position: absolute;
+align: center;
+left: 430px;
+top: 250px;
+right: 400px;}
+
+.form3 {position: absolute;
+left: 640px;
+top: 350px;}
+
+.kard {position: absolute;
+top: -100px;
+left: -150px;
+transform: rotate(180deg);}
+    </style>
+</head>
+<body>
+<div class="kard">
+<img src="{{ rev }}" alt="здесь должна была быть картинка, но не нашлась" height="1000" width="1500">
+</div>
+<h1><span class="badge bg-secondary bg-dark">Добавление отзыва</span></h1>
+<form action="" method="post">
+    {{ form.hidden_tag() }}
+    <p class="form1">
+        {{ form.title.label }}<br>
+        {{ form.title(class="form-control") }}<br>
+        {% for error in form.title.errors %}
+            <p class="alert alert-danger" role="alert">
+                {{ error }}
+            </p>
+        {% endfor %}
+    </p>
+    <p class="form2">
+        {{ form.content.label }}<br>
+        {{ form.content(class="form-control") }}<br>
+        {% for error in form.content.errors %}
+            <p content="alert alert-danger" role="alert">
+                {{ error }}
+            </p>
+        {% endfor %}
+    </p>
+    <div class="form3">
+    <p>{{ form.submit(type="submit", class="btn btn-primary") }}</p>
+    {{message}}
+    </div>
+</form>
+</body>
+</html>

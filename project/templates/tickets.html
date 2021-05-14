@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block content %}
+<style>
+body { background-image: url('static/img/jakob-owens-dO8qMqWimo8-unsplash.jpg');
+background-size: cover;}
+
+h1 {position: absolute;
+   top: 10px;
+   left: 595px;
+   font-style: normal;
+font-weight: normal;
+color: #FFFFFF;}
+
+.kard {position: fixed;
+top: 0px;
+left: 155px;
+opacity: 0.8;}
+
+.card {top: 0px;
+left: 500px;}
+
+.napis {position: absolute;
+top: 300px;
+left: 595px;}
+
+h2 {position: absolute;
+   top: 100px;
+   left: 250px;
+   font-style: normal;
+font-weight: normal;
+color: #FFFFFF;}
+
+h3 {position: absolute;
+   top: 200px;
+   left: 250px;
+   font-style: normal;
+font-weight: normal;
+color: #FFFFFF;}
+</style>
+<div class="kard">
+<img src="{{ tic }}" alt="здесь должна была быть картинка, но не нашлась" height="670" width="1000">
+</div>
+<h1>Билеты</h1>
+<h3>Наш океанариум работает с 10:00 до 21:00 в любой день</h3>
+{% if current_user.is_authenticated %}
+<div class="napis">
+<a href="http://127.0.0.1:5000/buy_tickets" class="btn btn-danger">Купить билет</a>
+</div>
+{% else %}
+<h2>Чтобы купить билет - зарегистрируйтесь или войдите</h2>
+{% endif %}
+{% for item in tickets%}
+<div class="card border-primary mb-3" style="max-width: 18rem;">
+  <div class="card-header">{{item.title}}
+  </div>
+  <div class="card-body text-primary">
+    <h5 class="card-title">{{item.price}}</h5>
+    <p class="card-text">{{item.age}} </p>
+
+  </div>
+</div>
+{% endfor %}
+
+{% endblock %}
