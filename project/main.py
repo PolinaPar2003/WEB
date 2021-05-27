@@ -1,6 +1,5 @@
-from flask import Flask, url_for, render_template, redirect, abort, jsonify
+from flask import Flask, url_for, render_template, redirect, abort
 from flask_login import LoginManager, login_user, logout_user, login_required, current_user
-from flask_ngrok import run_with_ngrok
 from data.users import User
 from data.tickets import Tickets
 from data.reviews import Reviews
@@ -15,7 +14,7 @@ from forms.login import LoginForm
 from flask import request
 from data import reviews_resourses
 from data import users_resources
-from flask_restful import reqparse, abort, Api, Resource
+from flask_restful import abort, Api
 
 app = Flask(__name__)
 api = Api(app)
@@ -177,7 +176,6 @@ def contacts():
 
 @app.route('/login', methods=['GET', 'POST'])  # вход пользователя
 def login():
-    log = url_for('static', filename='img/florian-olivo-QP-6IYWN1Rg-unsplash.jpg')
     form = LoginForm()
     if form.validate_on_submit():
         db_sess = db_session.create_session()
@@ -185,10 +183,10 @@ def login():
         if user and user.check_password(form.password.data):
             login_user(user, remember=form.remember_me.data)
             return redirect("/")
-        return render_template('login.html', log=log,
+        return render_template('login.html',
                                message="Неправильный логин или пароль",
                                form=form, title='Авторизация')
-    return render_template('login.html', form=form, log=log, title='Авторизация')
+    return render_template('login.html', form=form, title='Авторизация')
 
 
 @app.route('/logout')
@@ -200,22 +198,21 @@ def logout():
 
 @app.route("/register", methods=['GET', 'POST'])  # форма для регистраци
 def register():
-    reg = url_for('static', filename='img/tavis-beck-gRr64-OCKy0-unsplash.jpg')
     form = RegisterForm()
     if form.validate_on_submit():
         if form.password.data != form.password_again.data:
             return render_template('register.html',
                                    form=form,
-                                   message="Пароли не совпадают", reg=reg, title='Регистрация')
+                                   message="Пароли не совпадают", title='Регистрация')
         db_sess = db_session.create_session()
         if db_sess.query(User).filter(User.email == form.email.data).first():
             return render_template('register.html',
                                    form=form,
-                                   message="Такой пользователь уже есть", reg=reg, title='Регистрация')
+                                   message="Такой пользователь уже есть", title='Регистрация')
         if db_sess.query(User).filter(User.hashed_password == form.password.data).first():
             return render_template('register.html',
                                    form=form,
-                                   message="Такой пароль уже есть", reg=reg, title='Регистрация')
+                                   message="Такой пароль уже есть", title='Регистрация')
         user = User(
             name=form.name.data,
             email=form.email.data,
@@ -225,7 +222,7 @@ def register():
         db_sess.add(user)
         db_sess.commit()
         return redirect('/login')
-    return render_template("register.html", form=form, reg=reg, title='Регистрация')
+    return render_template("register.html", form=form, title='Регистрация')
 
 
 def main():
