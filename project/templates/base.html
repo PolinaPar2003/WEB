@@ -11,13 +11,17 @@
         @media (min-width: 700px) {
   .navbar-container {
     position: sticky;
-    width: 195px !important;
-    top: 0;
+    width: 215px !important;
+    top: 0px;
     left: 2000px;
     overflow-y: auto;
-    height: 60vh;
+    height: 65vh;
 
   }
+
+  .row {position: absolute;
+  top: 0px;
+  left: 1345px;}
 
   .navbar-container .navbar-brand {font-family: SovMod;
 font-style: normal;
@@ -49,7 +53,11 @@ font-weight: normal;}
     integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 </head>
 <body>
-<div class="row">
+    <main role="main" class="container">
+
+    {% block content %}{% endblock %}
+</main>
+    <div class="row">
                 <div class="col-md-4 col-lg-3 navbar-container bg-light">
         <!-- Вертикальное меню -->
         <nav class="navbar navbar-expand-md navbar-light">
@@ -98,10 +106,6 @@ font-weight: normal;}
 {% endif %}
         </nav>
       </div>
-    <main role="main" class="container">
-
-    {% block content %}{% endblock %}
-</main>
 </div>
 </body>
 </html>

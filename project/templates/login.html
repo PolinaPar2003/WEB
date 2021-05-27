@@ -9,7 +9,8 @@
                             crossorigin="anonymous">
     <title>Вход</title>
     <style>
-        body {background: #000000;
+        body {background-image: url('static/img/florian-olivo-QP-6IYWN1Rg-unsplash.jpg');
+background-size: cover;
 font-style: normal;
 font-weight: normal;
 color: #FFFFFF;
@@ -43,9 +44,6 @@ left: -145px;}
     </style>
 </head>
 <body>
-<div class="kard">
-<img src="{{ log }}" alt="здесь должна была быть картинка, но не нашлась" height="1000" width="1500">
-</div>
 <h1><span class="badge bg-secondary bg-dark">Авторизация</span></h1>
     <form action="" method="post">
         {{ form.hidden_tag() }}
