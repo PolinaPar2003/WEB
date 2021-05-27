@@ -18,7 +18,9 @@ top: 0px;
 left: 150px;
 opacity: 0.8;}
 
-.card {width: 750px;
+.card {
+position: relative;
+width: 750px;
 top: 300px;
 left: 150px;}
 
@@ -34,7 +36,7 @@ font-weight: normal;
 color: #FFFFFF;}
 
 .edit {position: relative;
-left: 150px;}
+left: 0px;}
 </style>
 <body>
 <div class="kard">
@@ -49,7 +51,9 @@ left: 150px;}
 {% else %}
 <h2>Чтобы оставить отзыв - зарегистрируйтесь или войдите</h2>
 {% endif %}
+
 {% for item in reviews%}
+<div class="card">
 {% if current_user.is_authenticated and current_user == item.user %}
     <div class="edit">
         <a href="/add_reviews/{{ item.id }}" class="btn btn-primary">
@@ -61,7 +65,7 @@ left: 150px;}
     </div>
 <p> </p>
 {% endif %}
-<div class="card">
+
   <div class="card-header">
       <img src="{{ rev }}" class="rounded mr-2" alt="..." height="30" width="30">
     <strong class="mr-auto">{{item.user.name}}</strong>
